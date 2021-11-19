@@ -1,0 +1,26 @@
+{% extends 'shared.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="d-flex justify-content-center align-items-center blue-200 homecontainer" style="background-color:gold;">
+  <div>
+    <figure class="text-center">
+      <img src="{% static 'assets/vote.png' %}" class="rounded mx-auto d-block" width="200" height="200" alt="vote">
+
+     <p>Welcome to</p>
+      <blockquote class="blockquote">
+        <h1 class="text-dark Lead"><strong>Votify</strong></h1>
+        <h1 class="text-dark">Django Voting System</h1>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        By <cite title="Source Title">Mu'ayyad Ayesh</cite>
+      </figcaption>
+    </figure>
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button class="btn btn-primary" type="button">Tap here to continue</button>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
