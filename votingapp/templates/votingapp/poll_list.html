@@ -11,33 +11,57 @@
 
 </div>
 
-<div class="justify-content-center">
-  <div class="row w-cols-2">
-    <div class="col">
-      <ul class="list-group">
-        <li class="list-group-item active" aria-current="true">Top 3 Polls</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
+<div class=" justify-content-center">
+          <div class="row w-cols-2">
+            <div class="col">
+              <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">
+                  <h3>Top 3 Polls</h3>
+                </li>
+                {% if TopPolls %}
+                {% for item in TopPolls %}
+                <li class="list-group-item">
+                  <h3>{{item.title}}</h3>
+                  <div class="row row-cols-2">
+                    {% for option in options %}
+                    <div class="col"><strong>{{option.title}}</strong>: {{votes}}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="text-end"> <i id="log">since {{item.created_date | timesince}}</i> </div>
+                </li>
+                {% endfor %}
+                {% else %}
+                <h1>Top Polls not available!</h1>
+                {% endif %}
+
+              </ul>
+            </div>
+
+            <div class="col">
+              <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">
+                  <h3>Recent Polls</h3>
+                </li>
+                {% if LastPolls %}
+                {% for item in LastPolls %}
+                <li class="list-group-item">
+                  <h3>{{item.title}}</h3>
+                  <div class="row row-cols-2">
+                    {% for option in options %}
+                    <div class="col"><strong>{{option.title}}</strong>: {{votes}}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="text-end"> <i id="log">since {{item.created_date | timesince}}</i> </div>
+                </li>
+                {% endfor %}
+                {% else %}
+                <h1>No Polls Available!</h1>
+                {% endif %}
+              </ul>
+            </div>
+
+          </div>
 
     </div>
-    <div class="col">
-      <ul class="list-group">
-        <li class="list-group-item active" aria-current="true">Recent Polls</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-    </div>
 
-  </div>
-
-</div>
-{% if poll_list %}
-
-{% endif %}
-
-{% endblock %}
+    {% endblock %}

@@ -24,7 +24,7 @@ class Poll(models.Model):
 
 #Answer object which has Answer-Poll (many-1) relationship
 class Answer(models.Model):
-    poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
+    poll = models.ForeignKey(Poll, related_name='options', on_delete=models.CASCADE)
     title = models.CharField(max_length=256)
     isRequired = models.BooleanField()
     votes = models.IntegerField(default=0)

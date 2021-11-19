@@ -13,16 +13,17 @@ class home(TemplateView):
     template_name = 'home.html'
 
 #List of all polls
-class poll_list (ListView):
+class poll_list(TemplateView):
     model = Poll
     template_name = 'poll_list.html'
-    def get_queryset(self):
-        LastPolls = Poll.objects.filter(last_update__lte = timezone.now()).order_by('-created_date')[:3]
+    def get_context_data(self, **kwargs):
+        LastPolls = Poll.objects.filter(created_date__lte = timezone.now()).order_by('-created_date')[:3]
         TopPolls = Poll.objects.filter(last_update__lte = timezone.now()).order_by('-last_update')[:3]
-        queryset = {'LastPolls': LastPolls,
-                    'TopPolls': TopPolls}
 
-        return queryset
+        context_data = super().get_context_data(**kwargs)
+        context_data['LastPolls'] = LastPolls
+        context_data['TopPolls'] = TopPolls
+        return context_data
 
 #View poll details by the author: LoginRequired
 class poll_details(LoginRequiredMixin, DetailView):
