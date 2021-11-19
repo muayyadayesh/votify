@@ -5,7 +5,7 @@
 <div class="mb-4">
   <div class="row">
     <div class="col-6">
-      <a href="{% url 'votingapp:poll_new' %}"> <button type="button" class="btn  btn-lg btn-warning"">Create new Poll</button></a>
+      <a href="{% url 'votingapp:poll_new' %}"> <button type="button" class="btn  btn-lg btn-warning"">Create New Poll</button></a>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
                 {% if TopPolls %}
                 {% for item in TopPolls %}
                 <li class="list-group-item">
-                  <h3 class="mb-4">{{item.title}}</h3>
+                  <h3 class="mb-4"><a class="text-decoration-none" href="#">{{item.title}}</a></h3>
                   <div class="row row-cols-2">
                     {% for option in item.options.all %}
                     <div class="col"><strong>{{option.title}}</strong>: {{ option.votes }}</div>
@@ -45,7 +45,7 @@
                 {% if LastPolls %}
                 {% for item in LastPolls %}
                 <li class="list-group-item">
-                  <h3 class="mb-4">{{item.title}}</h3>
+                  <h3 class="mb-4"><a class="text-decoration-none" href="#">{{item.title}}</a></h3>
                   <div class="row row-cols-2">
                     {% for option in item.options.all %}
                     <div class="col"><strong>{{option.title}}</strong>: {{option.votes}}</div>

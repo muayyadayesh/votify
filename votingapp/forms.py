@@ -6,9 +6,10 @@ class PollForm(forms.ModelForm):
 
     class Meta():
         model = Poll
-        fields = ('author', 'title', 'text')
+        fields = ('title',)
 
-        widgets = {
-            'title': forms.TextInput(attrs= {'class': 'textinputclass'}),
-            'text': forms.Textarea(attrs= {'class': 'editable medium-editor-textarea poll content'})
-        }
+class AnswerForm(forms.ModelForm):
+
+    class Meta():
+        model = Answer
+        fields = ('poll', 'title', 'isRequired')

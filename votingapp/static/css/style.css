@@ -10,3 +10,9 @@
 .since{
   font-size: 13px;
 }
+
+.pollform .required:after {
+  content: " *";
+    color: red;
+    font-weight: 100;
+}

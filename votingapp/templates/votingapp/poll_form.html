@@ -1,0 +1,40 @@
+{% extends 'shared.html' %}
+
+{% block body_block %}
+
+<h3 class="display-6">
+  <strong>Votify</strong>, Your way to change!
+</h3>
+
+<hr>
+<form class="pollform p-3 poll_form" method='POST'>
+  {% csrf_token %}
+  
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Your Question</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name='title' rows="3" required></textarea>
+    <div id="emailHelp" class="form-text">Try to make your question short, clear, and straight forward.</div>
+  </div>
+  <div class="mb-3">
+    <label for="option1" class="form-label required">Option 1</label>
+    <input type="text" class="form-control" id="option1" name="option1" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="option2" class="form-label required">Option 2</label>
+    <input type="text" class="form-control" id="option2" name="option2" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="option3" class="form-label">Option 3</label>
+    <input type="text" class="form-control" id="option3" name="option3">
+  </div>
+
+  <div class="mb-3">
+    <label for="option4" class="form-label">Option 4</label>
+    <input type="text" class="form-control" id="option4" name="option4">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit Poll</button>
+</form>
+{% endblock %}

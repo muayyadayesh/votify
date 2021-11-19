@@ -7,7 +7,6 @@ from django.urls import reverse
 class Poll(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=256, unique=True)
-    text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now())
     last_update = models.DateTimeField(default=timezone.now())
 
@@ -17,7 +16,7 @@ class Poll(models.Model):
 
     #reverse after actions
     def get_absolute_url(self):
-        return reverse("app:poll_details", kwargs={'pk': self.pk})
+        return reverse("votingapp:poll_details", kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title
@@ -27,7 +26,7 @@ class Answer(models.Model):
     poll = models.ForeignKey(Poll, related_name='options', on_delete=models.CASCADE)
     title = models.CharField(max_length=256)
     isRequired = models.BooleanField()
-    votes = models.IntegerField(default=0)
+    votes = models.IntegerField(default=0, blank=True)
 
     def Increase_vote(self):
         self.votes += 1
