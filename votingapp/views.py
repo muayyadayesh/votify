@@ -15,8 +15,14 @@ class home(TemplateView):
 #List of all polls
 class poll_list (ListView):
     model = Poll
+    template_name = 'poll_list.html'
     def get_queryset(self):
-        return Poll.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+        LastPolls = Poll.objects.filter(last_update__lte = timezone.now()).order_by('-created_date')[:3]
+        TopPolls = Poll.objects.filter(last_update__lte = timezone.now()).order_by('-last_update')[:3]
+        queryset = {'LastPolls': LastPolls,
+                    'TopPolls': TopPolls}
+
+        return queryset
 
 #View poll details by the author: LoginRequired
 class poll_details(LoginRequiredMixin, DetailView):
@@ -24,12 +30,13 @@ class poll_details(LoginRequiredMixin, DetailView):
     template_name = 'poll_details.html'
 
 #Create new poll: LoginRequired
-class poll_new(LoginRequiredMixin, CreateView):
+class poll_new( CreateView):
+    template_name = 'poll_new.html'
     form_class = PollForm
     model = Poll
 
-    login_url = '/login'
-    redirect_field_name = 'votingapp/poll_details.html'
+    # login_url = '/login'
+    # redirect_field_name = 'votingapp/poll_details.html'
 
 #Update the poll: LoginRequired
 class poll_update(LoginRequiredMixin, UpdateView):
