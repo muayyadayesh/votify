@@ -90,8 +90,13 @@ class poll_result(DetailView):
     model = Poll
     template_name = 'poll_result.html'
 
+class poll_vote(DetailView):
+    model = Poll
+    template_name = 'poll_vote.html'
+
+
 #No auth required here
-def poll_vote(request, pk):
+def poll_vote_action(request, pk):
     poll = get_object_or_404(Poll, pk=pk)
     form = VoteForm(data = request.POST)
     if form.is_valid():
