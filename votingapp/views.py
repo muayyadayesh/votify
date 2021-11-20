@@ -88,7 +88,8 @@ class poll_delete(LoginRequiredMixin, DeleteView):
 #Poll result, appears after voting action
 class poll_result(DetailView):
     model = Poll
-    template_name = 'poll_result.html'
+    template_name = 'votingapp/poll_result.html'
+
 
 class poll_vote(DetailView):
     model = Poll
@@ -97,8 +98,6 @@ class poll_vote(DetailView):
 
 #No auth required here
 def poll_vote_action(request, pk):
-    poll = get_object_or_404(Poll, pk=pk)
-    form = VoteForm(data = request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('votingapp:poll_result', pk=poll.pk)
+    answer = get_object_or_404(Answer, pk=pk)
+    answer.Increase_vote()
+    return redirect('votingapp:poll_result', pk=answer.poll.pk)

@@ -1,0 +1,88 @@
+{% extends 'shared.html' %}
+
+{% block body_block %}
+
+<div>
+  <div class="alert alert-success" role="alert">
+    Thanks for voting, here are the Results!
+  </div>
+
+  <div class="d-flex justify-content-center p-4">
+    <h1>{{ object.title }}</h1>
+  </div>
+  <hr>
+  <div class="d-flex justify-content-center p-4">
+    <div class="row w-cols-2">
+      <div class="col">
+        <div class="chart-container" style="height:30vh; width:30vw">
+          <canvas id="doughnutChart"></canvas>
+        </div>
+      </div>
+
+      <div class="col">
+
+        {% for option in object.options.all %}
+        <div class="row p-2">
+          <h3 class="">{{option.title}}</h3>
+          <strong class="">{{option.votes}}</strong>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- <script type="text/javascript">
+  const ctx = document.getElementById('doughnutChart');
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: {
+        {
+
+        }
+      }
+      datasets: [{
+        data: {
+          {
+[300, 50, 100],          }
+        },
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        hoverOffset: 10
+      }]
+    }
+  });
+</script> -->
+
+<script type="text/javascript">
+  const ctx = document.getElementById('doughnutChart');
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: {{object.get_graph_data.labels|safe}},
+      datasets: [{
+        data: {{object.get_graph_data.data|safe}},
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        hoverOffset: 10
+      }]
+    }
+  });
+</script>
+
+{% endblock %}

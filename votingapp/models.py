@@ -14,6 +14,17 @@ class Poll(models.Model):
         self.last_update = timezone.now()
         self.save()
 
+    def get_graph_data(self):
+
+        labels = []
+        data = []
+        queryset = self.options.all()
+
+        for answer in queryset:
+            labels.append(answer.title)
+            data.append(answer.votes)
+
+        return {'labels': labels, 'data': data}
     #reverse after actions
     def get_absolute_url(self):
         return reverse("votingapp:poll_details", kwargs={'pk': self.pk})
@@ -31,6 +42,9 @@ class Answer(models.Model):
     def Increase_vote(self):
         self.votes += 1
         self.save()
+
+    def get_absolute_url(self):
+        return reverse("votingapp:poll_list")
 
     def __str__(self):
         return self.title
