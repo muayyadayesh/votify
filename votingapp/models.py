@@ -14,8 +14,8 @@ class Poll(models.Model):
         self.last_update = timezone.now()
         self.save()
 
+    #Return chart data for the result page
     def get_graph_data(self):
-
         labels = []
         data = []
         queryset = self.options.all()
@@ -40,7 +40,10 @@ class Answer(models.Model):
     votes = models.IntegerField(default=0, blank=True)
 
     def Increase_vote(self):
+        #increase the current vote count by 1
         self.votes += 1
+        #update the poll recent interactions time
+        self.poll.set_last_update()
         self.save()
 
     def get_absolute_url(self):

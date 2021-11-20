@@ -12,17 +12,17 @@
     {% for answer in object.options.all %}
 
     <div class="col-6">
-        {% csrf_token %}
-        <div class="p-3 border bg-light rounded-3">
-          <span class="badge rounded-circle bg-warning">{{forloop.counter}}</span>
-          <div class="d-flex justify-content-center">
-            <h3>{{answer.title}}</h3>
-          </div>
-          <div class="d-grid col-md-auto mx-auto p-4">
-          <a href="{% url 'votingapp:poll_vote_action' pk=answer.pk %}"> <button class="btn btn-primary" type="button">Vote for {{answer.title}}</button></a>
-          </div>
-
+      {% csrf_token %}
+      <div class="p-3 border bg-light rounded-3">
+        <span class="badge rounded-circle bg-danger">{{forloop.counter}}</span>
+        <div class="d-flex justify-content-center ">
+          <h3>{{answer.title}}</h3>
         </div>
+        <div class="d-flex justify-content-center  p-4">
+          <a href="{% url 'votingapp:poll_vote_action' pk=answer.pk %}"> <button class="btn btn-primary" type="button">Vote for {{answer.title}}</button></a>
+        </div>
+
+      </div>
     </div>
 
     {% endfor %}

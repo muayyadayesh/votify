@@ -23,7 +23,7 @@
                 <h3 class="mb-4"><a class="text-decoration-none" href="{% url 'votingapp:poll_vote' pk=item.pk %}">{{item.title}}</a></h3>
                 <div class="row row-cols-2">
                   {% for option in item.options.all %}
-                  <div class="col"><strong>{{option.title}}</strong>: {{ option.votes }}</div>
+                  <div class="col"><strong>{{option.title|safe}}</strong>: {{ option.votes|safe }}</div>
                   {% endfor %}
                 </div>
                 <div class="text-end text-success"> <i class="since">{{item.created_date | timesince}} ago</i> </div>

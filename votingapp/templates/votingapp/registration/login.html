@@ -4,7 +4,6 @@
 
 <div class="">
   <h1>Login to your account!</h1>
-  <h3>Must be a superuser, please check with the team!</h3>
 
   {% if form.errors %}
   <p>Login failed, please try again!</p>
@@ -12,8 +11,18 @@
 
   <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" name="submit" value="submit">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" id="username" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="password" placeholder="example: 123456">
+    </div>
+
+    <div class="d-grid gap-5 col-3 ">
+      <input type="submit" class="btn btn-primary" name="submit" value="Login">
+      </div>
     <input hidden type="hidden" name="next" value="{{next}}">
   </form>
 

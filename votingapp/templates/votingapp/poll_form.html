@@ -4,12 +4,16 @@
 
 <h3 class="display-6">
   <strong>Votify</strong>, Your way to change!
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <a href="{% url 'votingapp:poll_list'%}"><button type="button" class="btn btn-primary btn-sm">go Back</button></a>
+  </div>
+
 </h3>
 
 <hr>
 <form class="pollform p-3 poll_form" method='POST'>
   {% csrf_token %}
-  
+
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Your Question</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" name='title' rows="3" required></textarea>

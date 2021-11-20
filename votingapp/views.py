@@ -37,7 +37,7 @@ class poll_new(LoginRequiredMixin, CreateView):
     model = Poll
 
     login_url = '/accounts/login'
-    # redirect_field_name = '/'
+    redirect_field_name = '/'
 
 @login_required
 def newpoll(request):
