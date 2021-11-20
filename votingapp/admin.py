@@ -1,6 +1,6 @@
 from django.contrib import admin
 from votingapp.models import *
 
-# Register your models here.
+# Registering Poll & Answer models inside the admin section .
 admin.site.register(Poll)
 admin.site.register(Answer)

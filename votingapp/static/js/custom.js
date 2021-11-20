@@ -1,4 +1,3 @@
-
 function loadchart(labels, data){
   const ctx = document.getElementById('doughnutChart');
   const myChart = new Chart(ctx, {

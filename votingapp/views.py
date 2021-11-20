@@ -35,9 +35,7 @@ class poll_details(LoginRequiredMixin, DetailView):
 class poll_new(LoginRequiredMixin, CreateView):
     form_class = PollForm
     model = Poll
-
     login_url = '/accounts/login'
-    redirect_field_name = '/'
 
 @login_required
 def newpoll(request):
@@ -61,12 +59,12 @@ def newpoll(request):
 
             #Save answer 3 if exists
             if request.POST.get('option3', ''):
-                option3 = Answer(poll=obj, title=request.POST.get('option3', ''), isRequired=True)
+                option3 = Answer(poll=obj, title=request.POST.get('option3', ''), isRequired=False)
                 option3.save()
 
             #Save answer 4 if exists
             if request.POST.get('option4', ''):
-                option4 = Answer(poll=obj, title=request.POST.get('option4', ''), isRequired=True)
+                option4 = Answer(poll=obj, title=request.POST.get('option4', ''), isRequired=False)
                 option4.save()
             return redirect("votingapp:poll_list")
 

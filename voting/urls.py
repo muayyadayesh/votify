@@ -19,6 +19,6 @@ from django.contrib.auth import views
 
 urlpatterns = [
     path('', include('votingapp.urls')),
-    path('admin/', admin.site.urls),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
+    path('admin/', admin.site.urls),
 ]

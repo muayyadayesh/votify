@@ -11,6 +11,14 @@
 </h3>
 
 <hr>
+
+
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+  {{form.errors}}
+</div>
+{% endif %}
+
 <form class="pollform p-3 poll_form" method='POST'>
   {% csrf_token %}
 
