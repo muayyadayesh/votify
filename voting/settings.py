@@ -28,7 +28,7 @@ SECRET_KEY = 'i4lah+g3v@7+u*g9l7ve9ujngs2=ho5k)!ce-5y=^ipalbk8!m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'fast-plateau-65049.herokuapp.com', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', 'votifynow.herokuapp.com', '0.0.0.0']
 
 
 # Application definition
