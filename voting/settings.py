@@ -10,13 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'votingapp/templates/votingapp')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -27,7 +28,7 @@ SECRET_KEY = 'i4lah+g3v@7+u*g9l7ve9ujngs2=ho5k)!ce-5y=^ipalbk8!m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'fast-plateau-65049.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'fast-plateau-65049.herokuapp.com', '0.0.0.0']
 
 
 # Application definition
@@ -120,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = STATIC_DIR
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_REDIRECT_URL = '/poll/'
