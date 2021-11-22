@@ -23,7 +23,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'votingapp/templates/votingapp')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'i4lah+g3v@7+u*g9l7ve9ujngs2=ho5k)!ce-5y=^ipalbk8!m'
+SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
