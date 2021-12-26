@@ -11,7 +11,7 @@
 - Used the CBVs mainly
 - Used Chart.js for charts
 - Used 'LoginRequiredMixin' only with only adding a 'New Poll'
-- Advanced checks & features & validations ignored, since we are working on basic assignment
+- Advanced checks & features & validations ignored
 - Finally, I excluded 'virtualenv' from uploaded files & removed '.gitignore' from the whole project
 
 
