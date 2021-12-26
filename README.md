@@ -4,7 +4,7 @@
 <!-- ![image](https://user-images.githubusercontent.com/31501126/142724830-a3c17865-ce6f-4a88-831e-04f3ae9d9198.png)
 ![image](https://user-images.githubusercontent.com/31501126/142724890-15ca4411-1c00-4e01-832e-201e51fe7f5d.png)
  -->
-## Important notes:
+## notes:
 - Settings changed for deployment
 - SQLite flushed for deployment
 - Used the Bootstrap
