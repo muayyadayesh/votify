@@ -1,4 +1,4 @@
-# Vote Assignment - Votify:
+# Django Voting App - Votify:
 
 ![image](https://user-images.githubusercontent.com/31501126/142724817-7796446a-9810-4326-9c89-b902f039e560.png)
 <!-- ![image](https://user-images.githubusercontent.com/31501126/142724830-a3c17865-ce6f-4a88-831e-04f3ae9d9198.png)
